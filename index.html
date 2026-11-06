@@ -1,2052 +1,476 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rajendra Chenna | QA Test Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --navy:#070d1a;
+    --navy2:#0c1425;
+    --navy3:#111e35;
+    --cyan:#00d4c8;
+    --cyan2:#00a99f;
+    --gold:#f0a020;
+    --text:#e8eaf0;
+    --muted:#7a8499;
+    --border:rgba(0,212,200,0.15);
+    --card:rgba(17,30,53,0.8);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6vw;}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--cyan);letter-spacing:0.02em;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--cyan);}
 
-  <meta name="description"
-        content="Professional portfolio of a QA Automation Engineer specializing in Playwright, TypeScript, Selenium, API testing, SQL, CI/CD and AI-assisted testing.">
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:100px 6vw 60px;overflow:hidden;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,200,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,200,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-glow{position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(0,212,200,0.06) 0%,transparent 70%);pointer-events:none;}
+  .hero-glow2{position:absolute;bottom:-10%;right:-5%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(240,160,32,0.05) 0%,transparent 70%);pointer-events:none;}
+  .hero-content{position:relative;max-width:1100px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);border:1px solid var(--border);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem;letter-spacing:0.06em;}
+  .hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.1;color:#fff;margin-bottom:0.5rem;}
+  .hero-title{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--cyan);margin-bottom:1.5rem;letter-spacing:0.03em;}
+  .hero-desc{color:var(--muted);font-size:1rem;line-height:1.8;max-width:440px;margin-bottom:2.5rem;}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{background:var(--cyan);color:var(--navy);padding:12px 28px;border-radius:6px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;display:inline-block;}
+  .btn-primary:hover{background:var(--cyan2);transform:translateY(-1px);}
+  .btn-outline{border:1px solid var(--border);color:var(--text);padding:12px 28px;border-radius:6px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block;}
+  .btn-outline:hover{border-color:var(--cyan);color:var(--cyan);}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.2s;}
+  .stat-card:hover{border-color:rgba(0,212,200,0.35);}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--cyan);line-height:1;}
+  .stat-label{font-size:0.85rem;color:var(--muted);margin-top:6px;line-height:1.4;}
+  .stat-card.gold .stat-num{color:var(--gold);}
 
-  <meta name="keywords"
-        content="QA Automation Engineer, Playwright, TypeScript, Selenium, SDET, API Testing, SQL, Jenkins, AI Testing">
+  /* SECTION WRAPPER */
+  section{padding:100px 6vw;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
+  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3vw,2.8rem);color:#fff;margin-bottom:1rem;}
+  .section-divider{width:50px;height:2px;background:var(--cyan);border-radius:2px;margin-bottom:3rem;}
 
-  <title>QA Automation Engineer | Playwright | TypeScript | SDET</title>
+  /* SKILLS */
+  #skills{background:var(--navy2);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:border-color 0.2s,transform 0.2s;}
+  .skill-card:hover{border-color:rgba(0,212,200,0.35);transform:translateY(-3px);}
+  .skill-icon{width:42px;height:42px;border-radius:10px;background:rgba(0,212,200,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.2rem;}
+  .skill-card h3{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:0.75rem;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;background:rgba(0,212,200,0.08);color:var(--cyan);border:1px solid rgba(0,212,200,0.2);padding:4px 10px;border-radius:100px;letter-spacing:0.03em;}
+  .tag.gold{background:rgba(240,160,32,0.08);color:var(--gold);border-color:rgba(240,160,32,0.2);}
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
+  .timeline-item{position:relative;margin-bottom:3rem;}
+  .timeline-dot{position:absolute;left:-2.35rem;top:8px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid var(--navy);}
+  .exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s;}
+  .exp-card:hover{border-color:rgba(0,212,200,0.35);}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;}
+  .exp-role{font-size:1.15rem;font-weight:600;color:#fff;}
+  .exp-period{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);background:rgba(0,212,200,0.08);border:1px solid rgba(0,212,200,0.2);padding:4px 12px;border-radius:100px;}
+  .exp-company{color:var(--gold);font-size:0.9rem;margin-bottom:1.25rem;}
+  .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+  .exp-bullets li{color:var(--muted);font-size:0.92rem;padding-left:1.2rem;position:relative;line-height:1.6;}
+  .exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--cyan);}
+  .exp-bullets li strong{color:var(--text);}
 
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: [
-              "Inter",
-              "ui-sans-serif",
-              "system-ui",
-              "sans-serif"
-            ]
-          }
-        }
-      }
-    }
-  </script>
+  /* PROJECTS */
+  #projects{background:var(--navy2);}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.75rem;}
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:1rem;}
+  .project-card:hover{border-color:rgba(0,212,200,0.35);transform:translateY(-3px);}
+  .project-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold);background:rgba(240,160,32,0.08);border:1px solid rgba(240,160,32,0.2);padding:3px 10px;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase;}
+  .project-badge.live{color:var(--cyan);background:rgba(0,212,200,0.08);border-color:rgba(0,212,200,0.2);}
+  .project-title{font-size:1.1rem;font-weight:600;color:#fff;}
+  .project-desc{color:var(--muted);font-size:0.9rem;line-height:1.7;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+  .project-metrics{display:flex;gap:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+  .metric{text-align:center;}
+  .metric-val{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--cyan);}
+  .metric-lbl{font-size:0.72rem;color:var(--muted);}
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  /* CERTIFICATIONS */
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+  .cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;}
+  .cert-card:hover{border-color:rgba(0,212,200,0.35);}
+  .cert-icon{width:44px;height:44px;min-width:44px;border-radius:10px;background:rgba(240,160,32,0.1);border:1px solid rgba(240,160,32,0.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .cert-icon.active{background:rgba(0,212,200,0.1);border-color:rgba(0,212,200,0.2);}
+  .cert-name{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:4px;}
+  .cert-year{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);}
 
-    body {
-      font-family: Inter, system-ui, sans-serif;
-    }
+  /* EDUCATION */
+  #education{background:var(--navy2);}
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+  .edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s;}
+  .edu-card:hover{border-color:rgba(0,212,200,0.35);}
+  .edu-degree{font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.5rem;}
+  .edu-uni{color:var(--muted);font-size:0.9rem;margin-bottom:1rem;}
+  .edu-meta{display:flex;justify-content:space-between;align-items:center;}
+  .edu-cgpa{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--cyan);}
+  .edu-year{font-size:0.8rem;color:var(--muted);}
 
-    .glass {
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
+  /* ACHIEVEMENTS */
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+  .ach-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;border-left:3px solid var(--cyan);transition:border-color 0.2s;}
+  .ach-card.gold-accent{border-left-color:var(--gold);}
+  .ach-card:hover{border-color:rgba(0,212,200,0.35);}
+  .ach-title{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:0.5rem;}
+  .ach-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
 
-    .gradient-text {
-      background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+  /* CONTACT */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+  .contact-desc{color:var(--muted);line-height:1.8;margin-bottom:2rem;}
+  .contact-links{display:flex;flex-direction:column;gap:1rem;}
+  .contact-link{display:flex;align-items:center;gap:0.75rem;color:var(--text);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
+  .contact-link:hover{color:var(--cyan);}
+  .contact-link-icon{width:40px;height:40px;border-radius:8px;background:rgba(0,212,200,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .contact-form{display:flex;flex-direction:column;gap:1rem;}
+  .form-group input,.form-group textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;resize:vertical;}
+  .form-group input:focus,.form-group textarea:focus{border-color:rgba(0,212,200,0.5);}
+  .form-group textarea{min-height:120px;}
 
-    .timeline-line::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 10px;
-      bottom: 0;
-      width: 2px;
-      background: #dbe3ef;
-    }
+  /* FOOTER */
+  footer{text-align:center;padding:3rem 6vw;border-top:1px solid var(--border);color:var(--muted);font-size:0.85rem;}
+  footer span{color:var(--cyan);}
 
-    .dark .timeline-line::before {
-      background: #263244;
-    }
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .hero-content{grid-template-columns:1fr;gap:3rem;}
+    .hero-stats{grid-template-columns:1fr 1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
 
-    .fade-up {
-      animation: fadeUp 0.7s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .skill-card {
-      transition: all 0.25s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .project-card {
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-    }
-  </style>
+  /* ANIMATE */
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s,transform 0.6s;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
+<body>
 
-<body
-  class="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#070b12] dark:text-white">
-
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
-
-<header
-  class="glass fixed top-0 z-50 w-full border-b border-slate-200/70 bg-white/80 dark:border-white/10 dark:bg-[#070b12]/80">
-
-  <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-
-    <!-- Logo -->
-
-    <a href="#home" class="flex items-center gap-3">
-
-      <div
-        class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950">
-
-        <span class="font-bold">RC</span>
-
-      </div>
-
-      <div>
-
-        <div class="font-bold">
-          Rajendra Chenna
-        </div>
-
-        <div
-          class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
-
-          QA Automation Engineer
-
-        </div>
-
-      </div>
-
-    </a>
-
-    <!-- Desktop Navigation -->
-
-    <nav class="hidden gap-7 text-sm font-medium lg:flex">
-
-      <a href="#about" class="hover:text-blue-600">
-        About
-      </a>
-
-      <a href="#experience" class="hover:text-blue-600">
-        Experience
-      </a>
-
-      <a href="#skills" class="hover:text-blue-600">
-        Skills
-      </a>
-
-      <a href="#projects" class="hover:text-blue-600">
-        Projects
-      </a>
-
-      <a href="#framework" class="hover:text-blue-600">
-        Framework
-      </a>
-
-      <a href="#certifications" class="hover:text-blue-600">
-        Certifications
-      </a>
-
-      <a href="#resume" class="hover:text-blue-600">
-        Resume
-      </a>
-
-      <a href="#contact" class="hover:text-blue-600">
-        Contact
-      </a>
-
-    </nav>
-
-    <!-- Actions -->
-
-    <div class="flex items-center gap-2">
-
-      <button
-        onclick="toggleTheme()"
-        class="rounded-xl border border-slate-200 p-2.5 hover:bg-slate-100 dark:border-white/10 dark:hover:bg-white/10">
-
-        <span id="themeIcon">
-          🌙
-        </span>
-
-      </button>
-
-      <button
-        onclick="toggleMobileMenu()"
-        class="rounded-xl border border-slate-200 p-2.5 lg:hidden dark:border-white/10">
-
-        ☰
-
-      </button>
-
-    </div>
-
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">RC</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:chennarajendra8@gmail.com" class="btn-primary" style="padding:8px 20px;font-size:0.82rem;">Hire Me</a>
   </div>
+</nav>
 
-  <!-- Mobile Navigation -->
-
-  <div
-    id="mobileMenu"
-    class="hidden border-t border-slate-200 bg-white px-5 py-4 dark:border-white/10 dark:bg-[#070b12] lg:hidden">
-
-    <div class="grid gap-2">
-
-      <a href="#about" onclick="closeMobileMenu()">
-        About
-      </a>
-
-      <a href="#experience" onclick="closeMobileMenu()">
-        Experience
-      </a>
-
-      <a href="#skills" onclick="closeMobileMenu()">
-        Skills
-      </a>
-
-      <a href="#projects" onclick="closeMobileMenu()">
-        Projects
-      </a>
-
-      <a href="#framework" onclick="closeMobileMenu()">
-        Framework
-      </a>
-
-      <a href="#certifications" onclick="closeMobileMenu()">
-        Certifications
-      </a>
-
-      <a href="#resume" onclick="closeMobileMenu()">
-        Resume
-      </a>
-
-      <a href="#contact" onclick="closeMobileMenu()">
-        Contact
-      </a>
-
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="fade-in">
+      <div class="hero-tag">&#x2713; Available for Opportunities</div>
+      <h1 class="hero-name">Rajendra<br/>Chenna</h1>
+      <p class="hero-title">SDET | Serving Notice | Playwright + TypeScript | Selenium | API Testing (Postman/REST) | SQL | CI/CD (Jenkins, Allure) | Banking & Fintech QA | ISTQB Certified | 2.7 Yrs | Bengaluru/Hyderabad/Remote</p>
+      <p class="hero-desc">2.6+ years delivering zero critical defect escapes on live core banking platforms. Specialist in Manual Testing, REST API validation, and SQL backend testing in Agile environments.</p>
+      <div class="hero-actions">
+        <a href="mailto:chennarajendra8@gmail.com" class="btn-primary">Get In Touch</a>
+        <a href="www.linkedin.com/in/rajendra-chenna-sdeta" target="_blank" class="btn-outline">LinkedIn ↗</a>
+      </div>
     </div>
-
-  </div>
-
-</header>
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<section
-  id="home"
-  class="relative overflow-hidden pt-36 pb-24 lg:pt-48 lg:pb-32">
-
-  <div
-    class="absolute inset-0 -z-10
-           bg-[radial-gradient(circle_at_70%_30%,rgba(37,99,235,.10),transparent_32%)]">
-  </div>
-
-  <div
-    class="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
-
-    <div class="fade-up">
-
-      <div
-        class="mb-6 inline-flex items-center gap-2 rounded-full
-               border border-blue-200 bg-blue-50 px-4 py-2
-               text-xs font-bold text-blue-700
-               dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300">
-
-        ● AVAILABLE FOR QA / SDET OPPORTUNITIES
-
+    <div class="hero-stats fade-in" style="transition-delay:0.2s;">
+      <div class="stat-card">
+        <div class="stat-num">2.6+</div>
+        <div class="stat-label">Years in QA<br/>Banking & FinTech</div>
       </div>
-
-      <h1
-        class="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-
-        QA Automation
-        <span class="block">
-          Engineer
-        </span>
-
-      </h1>
-
-      <div
-        class="mt-5 text-xl font-bold text-blue-600 dark:text-blue-400">
-
-        Playwright
-        <span class="text-slate-400">|</span>
-        TypeScript
-        <span class="text-slate-400">|</span>
-        Selenium
-        <span class="text-slate-400">|</span>
-        AI Testing
-
+      <div class="stat-card gold">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Test Cases Designed<br/>& Executed</div>
       </div>
-
-      <p
-        class="mt-7 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-
-        Software Test Engineer specializing in manual and automation testing,
-        Playwright with TypeScript, Selenium with Java, API testing,
-        SQL/database validation and automation framework development.
-
-      </p>
-
-      <!-- CTA -->
-
-      <div class="mt-9 flex flex-wrap gap-3">
-
-        <a
-          href="resume.pdf"
-          download
-          class="rounded-xl bg-slate-950 px-6 py-3 text-sm font-bold
-                 text-white shadow-lg transition hover:-translate-y-1
-                 dark:bg-white dark:text-slate-950">
-
-          ↓ View Resume
-
-        </a>
-
-        <a
-          href="#projects"
-          class="rounded-xl border border-slate-300 bg-white
-                 px-6 py-3 text-sm font-bold transition
-                 hover:-translate-y-1 hover:border-blue-500
-                 dark:border-white/10 dark:bg-white/5">
-
-          Explore Projects →
-
-        </a>
-
-        <a
-          href="#contact"
-          class="rounded-xl border border-slate-300
-                 px-6 py-3 text-sm font-bold transition
-                 hover:-translate-y-1 hover:border-blue-500
-                 dark:border-white/10">
-
-          Contact Me
-
-        </a>
-
+      <div class="stat-card gold">
+        <div class="stat-num">95%+</div>
+        <div class="stat-label">Functional Test<br/>Coverage Achieved</div>
       </div>
-
-      <!-- Tech stack -->
-
-      <div
-        class="mt-10 flex flex-wrap gap-3 text-xs font-bold text-slate-500">
-
-        <span>Playwright</span>
-        <span>TypeScript</span>
-        <span>Selenium</span>
-        <span>Java</span>
-        <span>Postman</span>
-        <span>SQL</span>
-        <span>Jenkins</span>
-        <span>Allure</span>
-
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Critical Defect<br/>Escapes in 5+ Releases</div>
       </div>
-
     </div>
-
-
-    <!-- Hero Dashboard -->
-
-    <div class="flex items-center">
-
-      <div
-        class="w-full rounded-3xl border border-slate-200
-               bg-white p-6 shadow-2xl
-               dark:border-white/10 dark:bg-white/[0.03]">
-
-        <div class="mb-6 flex items-center justify-between">
-
-          <span
-            class="text-xs font-black uppercase tracking-[.2em] text-slate-500">
-
-            QA ENGINEERING
-
-          </span>
-
-          <div class="flex gap-1">
-
-            <span class="h-2 w-2 rounded-full bg-red-400"></span>
-            <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
-            <span class="h-2 w-2 rounded-full bg-green-400"></span>
-
-          </div>
-
-        </div>
-
-        <div class="space-y-4">
-
-          <div class="rounded-2xl border p-4 dark:border-white/10">
-
-            <div class="flex justify-between text-sm font-bold">
-
-              <span>
-                UI Automation
-              </span>
-
-              <span class="text-blue-600">
-                Playwright
-              </span>
-
-            </div>
-
-            <div class="mt-3 h-2 rounded-full bg-slate-100 dark:bg-white/10">
-
-              <div
-                class="h-2 w-[92%] rounded-full bg-blue-600">
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="rounded-2xl border p-4 dark:border-white/10">
-
-            <div class="flex justify-between text-sm font-bold">
-
-              <span>
-                API Testing
-              </span>
-
-              <span class="text-blue-600">
-                Postman
-              </span>
-
-            </div>
-
-            <div class="mt-3 h-2 rounded-full bg-slate-100 dark:bg-white/10">
-
-              <div
-                class="h-2 w-[85%] rounded-full bg-blue-600">
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="rounded-2xl border p-4 dark:border-white/10">
-
-            <div class="flex justify-between text-sm font-bold">
-
-              <span>
-                Database
-              </span>
-
-              <span class="text-blue-600">
-                SQL
-              </span>
-
-            </div>
-
-            <div class="mt-3 h-2 rounded-full bg-slate-100 dark:bg-white/10">
-
-              <div
-                class="h-2 w-[88%] rounded-full bg-blue-600">
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="rounded-2xl border p-4 dark:border-white/10">
-
-            <div class="flex justify-between text-sm font-bold">
-
-              <span>
-                CI/CD
-              </span>
-
-              <span class="text-blue-600">
-                Jenkins
-              </span>
-
-            </div>
-
-            <div class="mt-3 h-2 rounded-full bg-slate-100 dark:bg-white/10">
-
-              <div
-                class="h-2 w-[82%] rounded-full bg-blue-600">
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section
-  id="about"
-  class="border-y border-slate-200 bg-white py-24
-         dark:border-white/10 dark:bg-white/[0.02]">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <div class="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
-
-      <div>
-
-        <p
-          class="text-xs font-black uppercase tracking-[.2em] text-blue-600">
-
-          About Me
-
-        </p>
-
-        <h2
-          class="mt-3 text-4xl font-black tracking-tight">
-
-          Quality first.
-          <br>
-          Automation with purpose.
-
-        </h2>
-
-      </div>
-
-
-      <div>
-
-        <p
-          class="text-lg leading-8 text-slate-600 dark:text-slate-300">
-
-          I am a Software Test Engineer with experience in Manual Testing
-          and Automation Testing, specializing in delivering quality
-          software solutions.
-
-        </p>
-
-        <p
-          class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-
-          My technical focus includes Playwright with TypeScript,
-          Selenium with Java, API testing using Postman,
-          SQL and database testing, automation framework development,
-          Git, Jenkins and CI/CD.
-
-        </p>
-
-
-        <!-- Stats -->
-
-        <div class="mt-8 grid gap-4 sm:grid-cols-3">
-
-          <div
-            class="rounded-2xl border border-slate-200 p-5
-                   dark:border-white/10">
-
-            <div
-              class="text-3xl font-black text-blue-600">
-
-              300+
-
-            </div>
-
-            <div
-              class="mt-1 text-xs font-semibold text-slate-500">
-
-              Test cases
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="rounded-2xl border border-slate-200 p-5
-                   dark:border-white/10">
-
-            <div
-              class="text-3xl font-black text-blue-600">
-
-              150+
-
-            </div>
-
-            <div
-              class="mt-1 text-xs font-semibold text-slate-500">
-
-              SQL validations
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="rounded-2xl border border-slate-200 p-5
-                   dark:border-white/10">
-
-            <div
-              class="text-3xl font-black text-blue-600">
-
-              10+
-
-            </div>
-
-            <div
-              class="mt-1 text-xs font-semibold text-slate-500">
-
-              Agile sprints
-
-            </div>
-
-          </div>
-
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-tag">// Technical Expertise</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#128202;</div>
+        <h3>Testing Types</h3>
+        <div class="skill-tags">
+          <span class="tag">Functional</span><span class="tag">Regression</span><span class="tag">Smoke</span><span class="tag">Sanity</span><span class="tag">Integration</span><span class="tag">System</span><span class="tag">UAT</span><span class="tag">E2E</span><span class="tag">Negative</span>
         </div>
-
       </div>
-
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#9997;</div>
+        <h3>Test Design Techniques</h3>
+        <div class="skill-tags">
+          <span class="tag">BVA</span><span class="tag">Equivalence Partitioning</span><span class="tag">Decision Table</span><span class="tag">RTM</span><span class="tag">Test Plans</span><span class="tag">Test Scenarios</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#128225;</div>
+        <h3>API & Database</h3>
+        <div class="skill-tags">
+          <span class="tag">Postman</span><span class="tag">REST API</span><span class="tag">SQL</span><span class="tag">Joins</span><span class="tag">Subqueries</span><span class="tag">Backend Validation</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#128295;</div>
+        <h3>Tools & Process</h3>
+        <div class="skill-tags">
+          <span class="tag">JIRA</span><span class="tag">Agile Scrum</span><span class="tag">SDLC</span><span class="tag">STLC</span><span class="tag">Defect Lifecycle</span><span class="tag">Sprint Planning</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#129302;</div>
+        <h3>Automation</h3>
+        <div class="skill-tags">
+          <span class="tag gold">Playwright</span><span class="tag gold">Typescript</span> <span class="tag gold">Selenium WebDriver</span><span class="tag gold">Java</span><span class="tag gold">TestNG</span><span class="tag gold">POM</span><span class="tag gold">Maven</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">&#127968;</div>
+        <h3>Domain Knowledge</h3>
+        <div class="skill-tags">
+          <span class="tag">Core Banking</span><span class="tag">NEFT/RTGS/IMPS</span><span class="tag">FinTech</span><span class="tag">LOS/LMS</span><span class="tag">E-Banking</span>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     EXPERIENCE
-========================================================= -->
-
-<section id="experience" class="py-24">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <p
-      class="text-xs font-black uppercase tracking-[.2em] text-blue-600">
-
-      Experience
-
-    </p>
-
-    <h2
-      class="mt-3 text-4xl font-black">
-
-      Career Timeline
-
-    </h2>
-
-
-    <div
-      class="timeline-line relative mt-12 space-y-12 pl-8">
-
-
-      <!-- QKTECH -->
-
-      <div class="relative">
-
-        <div
-          class="absolute -left-[37px] top-1 h-4 w-4
-                 rounded-full border-4 border-slate-50
-                 bg-blue-600 dark:border-[#070b12]">
-        </div>
-
-        <div
-          class="rounded-3xl border border-slate-200
-                 bg-white p-7 dark:border-white/10
-                 dark:bg-white/[0.03]">
-
-          <div
-            class="flex flex-col gap-3 md:flex-row
-                   md:items-center md:justify-between">
-
-            <div>
-
-              <div
-                class="text-xs font-black uppercase
-                       tracking-[.15em] text-blue-600">
-
-                July 2025 — Present
-
-              </div>
-
-              <h3 class="mt-2 text-2xl font-black">
-
-                Test Engineer
-
-              </h3>
-
-              <p class="text-sm font-semibold text-slate-500">
-
-                QKTech · Bengaluru
-
-              </p>
-
-            </div>
-
-            <span
-              class="w-fit rounded-full bg-blue-50 px-3 py-1
-                     text-xs font-bold text-blue-700
-                     dark:bg-blue-950/40 dark:text-blue-300">
-
-              Current
-
-            </span>
-
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-tag">// Work History</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-role">Consultant</span>
+            <span class="exp-period">Mar 2024 –Nov 2024</span>
+            <span class="exp-role">Test Engineer</span>
+            <span class="exp-period">Nov 2024 – Present</span>
           </div>
-
-
-          <ul
-            class="mt-6 space-y-3 text-sm leading-7
-                   text-slate-600 dark:text-slate-300">
-
-            <li>
-              ✓ Automated regression suite using
-              Playwright + TypeScript with a hybrid framework
-              and Page Object Model.
-            </li>
-
-            <li>
-              ✓ Validated mission-critical banking workflows
-              including NEFT, RTGS, IMPS, Account Management,
-              Fund Transfers and Beneficiary Management.
-            </li>
-
-            <li>
-              ✓ Owned end-to-end LOS/LMS testing including
-              loan intake, credit evaluation, disbursement
-              and repayment tracking.
-            </li>
-
-            <li>
-              ✓ Combined Postman API validation with
-              SQL backend checks.
-            </li>
-
+          <div class="exp-company">QualityKiosk Technologies Pvt. Ltd. &mdash; Bengaluru, India</div>
+          <ul class="exp-bullets">
+            <li>Led end-to-end manual QA for <strong>enterprise banking web applications</strong>, achieving <strong>zero critical defect escapes</strong> across 5+ consecutive production releases — directly protecting live customer financial transactions.</li>
+            <li>Designed and executed <strong>300+ structured test cases</strong> covering functional, regression, integration, and negative scenarios, mapped to business requirements via RTM.</li>
+            <li>Validated mission-critical banking workflows: <strong>NEFT / RTGS / IMPS</strong> fund transfers, Transaction History, Account Management, Bills & Recharges, and Statement Generation.</li>
+            <li>Conducted <strong>REST API testing using Postman</strong> — validated payloads, HTTP status codes (2xx/4xx/5xx), auth headers, and error responses; executed <strong>SQL backend validation</strong> to confirm UI-to-database data integrity.</li>
+            <li>Managed full <strong>defect lifecycle in JIRA</strong> and participated in all Agile ceremonies: Sprint Planning, Daily Stand-ups, Sprint Reviews, and Retrospectives.</li>
+            <li>Collaborated with developers and BAs to clarify acceptance criteria, reducing defect re-open rate and accelerating sprint sign-off cycles.</li>
           </ul>
-
         </div>
-
       </div>
-
-
-      <!-- TRAINEE -->
-
-      <div class="relative">
-
-        <div
-          class="absolute -left-[37px] top-1 h-4 w-4
-                 rounded-full border-4 border-slate-50
-                 bg-blue-600 dark:border-[#070b12]">
-        </div>
-
-        <div
-          class="rounded-3xl border border-slate-200
-                 bg-white p-7 dark:border-white/10
-                 dark:bg-white/[0.03]">
-
-          <div
-            class="text-xs font-black uppercase tracking-[.15em]
-                   text-blue-600">
-
-            November 2024 — June 2025
-
-          </div>
-
-          <h3 class="mt-2 text-2xl font-black">
-
-            Trainee Test Engineer
-
-          </h3>
-
-          <p class="text-sm font-semibold text-slate-500">
-
-            Mumbai, Maharashtra
-
-          </p>
-
-
-          <ul
-            class="mt-6 space-y-3 text-sm leading-7
-                   text-slate-600 dark:text-slate-300">
-
-            <li>
-              ✓ Analysed requirements and prepared 100+ test cases.
-            </li>
-
-            <li>
-              ✓ Executed functional, smoke, sanity and regression testing.
-            </li>
-
-            <li>
-              ✓ Performed cross-browser testing across Chrome,
-              Firefox and Edge.
-            </li>
-
-            <li>
-              ✓ Tracked defects using Jira.
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-
-      <!-- CONSULTANT -->
-
-      <div class="relative">
-
-        <div
-          class="absolute -left-[37px] top-1 h-4 w-4
-                 rounded-full border-4 border-slate-50
-                 bg-blue-600 dark:border-[#070b12]">
-        </div>
-
-        <div
-          class="rounded-3xl border border-slate-200
-                 bg-white p-7 dark:border-white/10
-                 dark:bg-white/[0.03]">
-
-          <div
-            class="text-xs font-black uppercase tracking-[.15em]
-                   text-blue-600">
-
-            March 2024 — November 2024
-
-          </div>
-
-          <h3 class="mt-2 text-2xl font-black">
-
-            QA Consultant
-
-          </h3>
-
-          <p class="text-sm font-semibold text-slate-500">
-
-            Navi Mumbai, Maharashtra
-
-          </p>
-
-
-          <p
-            class="mt-5 text-sm leading-7
-                   text-slate-600 dark:text-slate-300">
-
-            Contributed to manual testing, functional,
-            regression, smoke and sanity testing,
-            defect tracking and testing activities.
-
-          </p>
-
-        </div>
-
-      </div>
-
     </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     SKILLS
-========================================================= -->
-
-<section
-  id="skills"
-  class="border-y border-slate-200 bg-white py-24
-         dark:border-white/10 dark:bg-white/[0.02]">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <p
-      class="text-xs font-black uppercase tracking-[.2em] text-blue-600">
-
-      Skills
-
-    </p>
-
-    <h2 class="mt-3 text-4xl font-black">
-
-      QA Engineering Toolkit
-
-    </h2>
-
-
-    <div
-      class="mt-10 grid gap-8 lg:grid-cols-[.5fr_1fr]">
-
-      <!-- Categories -->
-
-      <div
-        class="grid grid-cols-2 gap-3 lg:grid-cols-1">
-
-        <button
-          onclick="showSkill('automation')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          ⚙ Automation
-
-        </button>
-
-        <button
-          onclick="showSkill('programming')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          <> Programming
-
-        </button>
-
-        <button
-          onclick="showSkill('api')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          ⇄ API
-
-        </button>
-
-        <button
-          onclick="showSkill('database')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          ◉ Database
-
-        </button>
-
-        <button
-          onclick="showSkill('devops')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          ⚡ DevOps
-
-        </button>
-
-        <button
-          onclick="showSkill('ai')"
-          class="skill-button rounded-2xl border p-4 text-left font-bold">
-
-          ✦ AI
-
-        </button>
-
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-tag">// Project Work</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <span class="project-badge live">&#9679; Live Production</span>
+        <div class="project-title"> Core Banking Web App</div>
+        <div class="project-desc">Qa for 6 critical modules on a live production banking platform: Authentication, Account Management, Fund Transfers (NEFT/RTGS/IMPS), Transaction History, Bank Statements, and Bills & Recharges.</div>
+        <div class="project-stack">
+          <span class="tag">Manual Testing</span><span class="tag">JIRA</span><span class="tag">Postman</span><span class="tag">SQL</span><span class="tag">Regression</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">150+</div><div class="metric-lbl">Test Cases</div></div>
+          <div class="metric"><div class="metric-val">95%+</div><div class="metric-lbl">Coverage</div></div>
+          <div class="metric"><div class="metric-val">5+</div><div class="metric-lbl">Releases</div></div>
+          <div class="metric"><div class="metric-val">0</div><div class="metric-lbl">Escapes</div></div>
+        </div>
       </div>
-
-
-      <!-- Skill Details -->
-
-      <div
-        id="skillDetails"
-        class="rounded-3xl border border-slate-200
-               bg-slate-50 p-8
-               dark:border-white/10 dark:bg-white/[0.03]">
-
+      <div class="project-card fade-in">
+        <span class="project-badge" style="color:#a78bfa;background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.2);">&#x1F527;</span>
+        <div class="project-title">Selenium POM Automation Framework</div>
+        <div class="project-desc"> automation framework using Selenium WebDriver (Java) with Page Object Model design pattern. Automating login, search, cart, and checkout flows with data-driven TestNG tests.</div>
+        <div class="project-stack">
+          <span class="tag gold">Selenium</span><span class="tag gold">Java</span><span class="tag gold">TestNG</span><span class="tag gold">POM</span><span class="tag gold">Maven</span>
+        </div>
+        <div style="padding-top:1rem;border-top:1px solid var(--border);font-size:0.82rem;color:var(--muted);">2025 – Present &nbsp;·&nbsp; GitHub link coming soon</div>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     PROJECTS
-========================================================= -->
-
-<section id="projects" class="py-24">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <p
-      class="text-xs font-black uppercase tracking-[.2em] text-blue-600">
-
-      Projects
-
-    </p>
-
-    <h2 class="mt-3 text-4xl font-black">
-
-      QA Case Studies
-
-    </h2>
-
-
-    <div
-      class="mt-10 grid gap-6 lg:grid-cols-3">
-
-
-      <!-- PROJECT 1 -->
-
-      <article
-        class="project-card rounded-3xl border
-               border-slate-200 bg-white p-7
-               dark:border-white/10 dark:bg-white/[0.03]">
-
-        <span
-          class="text-xs font-black uppercase
-                 tracking-[.16em] text-blue-600">
-
-          Banking / FinTech
-
-        </span>
-
-        <h3 class="mt-3 text-2xl font-black">
-
-          Banking Transaction Quality
-
-        </h3>
-
-
-        <div class="mt-7 space-y-5 text-sm">
-
-          <div>
-            <b>Problem</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Mission-critical banking workflows required
-              consistent functional and data validation.
-            </p>
-          </div>
-
-          <div>
-            <b>Approach</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Combined functional testing with API and
-              SQL-backed validation.
-            </p>
-          </div>
-
-          <div>
-            <b>Automation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Playwright + TypeScript regression automation.
-            </p>
-          </div>
-
-          <div>
-            <b>Validation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              NEFT, RTGS, IMPS, account management,
-              fund transfers and beneficiary management.
-            </p>
-          </div>
-
-          <div>
-            <b>Result</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Resume-reported zero critical defect escapes
-              across 5+ consecutive production releases.
-            </p>
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 2 -->
-
-      <article
-        class="project-card rounded-3xl border
-               border-slate-200 bg-white p-7
-               dark:border-white/10 dark:bg-white/[0.03]">
-
-        <span
-          class="text-xs font-black uppercase
-                 tracking-[.16em] text-blue-600">
-
-          Lending
-
-        </span>
-
-        <h3 class="mt-3 text-2xl font-black">
-
-          LOS / LMS Testing
-
-        </h3>
-
-
-        <div class="mt-7 space-y-5 text-sm">
-
-          <div>
-            <b>Problem</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Loan lifecycle quality required UI,
-              API and database verification.
-            </p>
-          </div>
-
-          <div>
-            <b>Approach</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Tested loan intake, credit evaluation,
-              disbursement and repayment tracking.
-            </p>
-          </div>
-
-          <div>
-            <b>Automation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Postman API validation supported by SQL checks.
-            </p>
-          </div>
-
-          <div>
-            <b>Validation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              150+ SQL-backed transaction validations.
-            </p>
-          </div>
-
-          <div>
-            <b>Result</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Resume-reported 100% data accuracy
-              for the cited loan lifecycle scope.
-            </p>
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 3 -->
-
-      <article
-        class="project-card rounded-3xl border
-               border-slate-200 bg-white p-7
-               dark:border-white/10 dark:bg-white/[0.03]">
-
-        <span
-          class="text-xs font-black uppercase
-                 tracking-[.16em] text-blue-600">
-
-          Automation
-
-        </span>
-
-        <h3 class="mt-3 text-2xl font-black">
-
-          Playwright Regression Framework
-
-        </h3>
-
-
-        <div class="mt-7 space-y-5 text-sm">
-
-          <div>
-            <b>Problem</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Manual regression effort was slowing
-              release validation.
-            </p>
-          </div>
-
-          <div>
-            <b>Approach</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Implemented a hybrid Playwright + TypeScript
-              framework using Page Object Model.
-            </p>
-          </div>
-
-          <div>
-            <b>Automation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Reusable automation with Jenkins and
-              Allure reporting.
-            </p>
-          </div>
-
-          <div>
-            <b>Validation</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Functional, regression, integration and
-              negative test scenarios.
-            </p>
-          </div>
-
-          <div>
-            <b>Result</b>
-
-            <p class="mt-1 text-slate-600 dark:text-slate-300">
-              Resume-reported ~40% reduction in manual
-              regression effort per release.
-            </p>
-          </div>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     PLAYWRIGHT FRAMEWORK
-========================================================= -->
-
-<section
-  id="framework"
-  class="bg-slate-950 py-24 text-white">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <p
-      class="text-xs font-black uppercase tracking-[.2em] text-blue-400">
-
-      Automation Framework
-
-    </p>
-
-    <h2 class="mt-3 text-4xl font-black">
-
-      Playwright Architecture
-
-    </h2>
-
-    <p class="mt-4 max-w-2xl text-slate-400">
-
-      A clean, scalable automation architecture
-      based on Playwright + TypeScript and Page Object Model.
-
-    </p>
-
-
-    <!-- Architecture -->
-
-    <div
-      class="mt-12 overflow-x-auto rounded-3xl
-             border border-white/10 bg-white/[0.03] p-8">
-
-      <div class="min-w-[800px]">
-
-        <!-- Layer -->
-
-        <div class="grid grid-cols-[160px_1fr] gap-6">
-
-          <div
-            class="flex items-center text-xs font-black
-                   uppercase tracking-widest text-blue-400">
-
-            Tests
-
-          </div>
-
-          <div class="grid grid-cols-4 gap-3">
-
-            <div class="box">
-              Smoke
-            </div>
-
-            <div class="box">
-              Regression
-            </div>
-
-            <div class="box">
-              Integration
-            </div>
-
-            <div class="box">
-              Negative
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="py-5 text-center text-blue-400">
-          ↓
-        </div>
-
-
-        <div class="grid grid-cols-[160px_1fr] gap-6">
-
-          <div
-            class="flex items-center text-xs font-black
-                   uppercase tracking-widest text-blue-400">
-
-            Test Layer
-
-          </div>
-
-          <div class="grid grid-cols-4 gap-3">
-
-            <div class="box">
-              Playwright Test
-            </div>
-
-            <div class="box">
-              Fixtures
-            </div>
-
-            <div class="box">
-              Hooks
-            </div>
-
-            <div class="box">
-              Tags
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="py-5 text-center text-blue-400">
-          ↓
-        </div>
-
-
-        <div class="grid grid-cols-[160px_1fr] gap-6">
-
-          <div
-            class="flex items-center text-xs font-black
-                   uppercase tracking-widest text-blue-400">
-
-            Page Objects
-
-          </div>
-
-          <div class="grid grid-cols-4 gap-3">
-
-            <div class="box">
-              Login Page
-            </div>
-
-            <div class="box">
-              Dashboard
-            </div>
-
-            <div class="box">
-              Transfer Page
-            </div>
-
-            <div class="box">
-              Components
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="py-5 text-center text-blue-400">
-          ↓
-        </div>
-
-
-        <div class="grid grid-cols-[160px_1fr] gap-6">
-
-          <div
-            class="flex items-center text-xs font-black
-                   uppercase tracking-widest text-blue-400">
-
-            Utilities
-
-          </div>
-
-          <div class="grid grid-cols-4 gap-3">
-
-            <div class="box">
-              Test Data
-            </div>
-
-            <div class="box">
-              API Helpers
-            </div>
-
-            <div class="box">
-              Assertions
-            </div>
-
-            <div class="box">
-              Config
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="py-5 text-center text-blue-400">
-          ↓
-        </div>
-
-
-        <div class="grid grid-cols-[160px_1fr] gap-6">
-
-          <div
-            class="flex items-center text-xs font-black
-                   uppercase tracking-widest text-blue-400">
-
-            CI / CD
-
-          </div>
-
-          <div class="grid grid-cols-4 gap-3">
-
-            <div class="box">
-              Git
-            </div>
-
-            <div class="box">
-              Jenkins
-            </div>
-
-            <div class="box">
-              Allure
-            </div>
-
-            <div class="box">
-              Pipeline
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CERTIFICATIONS
-========================================================= -->
-
-<section
-  id="certifications"
-  class="py-24">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <p
-      class="text-xs font-black uppercase tracking-[.2em] text-blue-600">
-
-      Certifications
-
-    </p>
-
-    <h2 class="mt-3 text-4xl font-black">
-
-      Credentials
-
-    </h2>
-
-
-    <div
-      class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-
-      <div class="credential">
-        <div class="text-2xl">✓</div>
-
-        <h3 class="mt-3 font-bold">
-          ISTQB® Foundation Level
-        </h3>
-
-        <p class="mt-2 text-xs text-slate-500">
-          Certified
-        </p>
-
-      </div>
-
-
-      <div class="credential">
-        <div class="text-2xl">✦</div>
-
-        <h3 class="mt-3 font-bold">
-          AWS Prompt Engineering
-        </h3>
-
-        <p class="mt-2 text-xs text-slate-500">
-          AI-assisted testing
-        </p>
-
-      </div>
-
-
-      <div class="credential">
-        <div class="text-2xl">⚙</div>
-
-        <h3 class="mt-3 font-bold">
-          Automation Testing with Playwright
-        </h3>
-
-        <p class="mt-2 text-xs text-slate-500">
-          Credential listed on resume
-        </p>
-
-      </div>
-
-
-      <div class="credential">
-        <div class="text-2xl">◆</div>
-
-        <h3 class="mt-3 font-bold">
-          Complete 2025 Software Testing Bootcamp
-        </h3>
-
-        <p class="mt-2 text-xs text-slate-500">
-          Course listed on resume
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     RESUME
-========================================================= -->
-
-<section
-  id="resume"
-  class="border-y border-slate-200
-         bg-white py-24
-         dark:border-white/10
-         dark:bg-white/[0.02]">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <div
-      class="rounded-3xl border border-slate-200
-             p-8 md:p-12
-             dark:border-white/10">
-
-      <div
-        class="flex flex-col gap-8 md:flex-row
-               md:items-center md:justify-between">
-
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <p class="section-tag">// Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+    <div class="section-divider"></div>
+    <div class="certs-grid">
+      <div class="cert-card fade-in">
+        <div class="cert-icon">&#127942;</div>
         <div>
-
-          <p
-            class="text-xs font-black uppercase
-                   tracking-[.2em] text-blue-600">
-
-            Resume
-
-          </p>
-
-          <h2 class="mt-3 text-3xl font-black">
-
-            Download My Resume
-
-          </h2>
-
-          <p
-            class="mt-3 max-w-xl text-sm leading-7
-                   text-slate-600 dark:text-slate-400">
-
-            Get the complete professional profile,
-            experience and technical skills.
-
-          </p>
-
+          <div class="cert-name">ISTQB CTFL 4.0</div>
+          <div class="cert-year">Foundation Level Certification &nbsp;·&nbsp; 2025</div>
         </div>
-
-
-        <a
-          href="resume.pdf"
-          download
-          class="inline-flex w-fit items-center gap-3
-                 rounded-xl bg-blue-600 px-6 py-3
-                 text-sm font-bold text-white
-                 transition hover:bg-blue-700">
-
-          ↓ Download Resume
-
-        </a>
-
       </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-
-<section id="contact" class="py-24">
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-
-    <div
-      class="rounded-3xl bg-slate-950 p-8
-             text-white md:p-12">
-
-      <div
-        class="grid gap-10 lg:grid-cols-[1fr_auto]
-               lg:items-center">
-
+      <div class="cert-card fade-in">
+        <div class="cert-icon active">&#129302;</div>
         <div>
-
-          <p
-            class="text-xs font-black uppercase
-                   tracking-[.2em] text-blue-400">
-
-            Contact
-
-          </p>
-
-          <h2
-            class="mt-3 text-4xl font-black">
-
-            Let's build better software.
-
-          </h2>
-
-          <p
-            class="mt-5 max-w-2xl text-slate-300">
-
-            Open to QA Engineer, QA Automation Engineer
-            and SDET opportunities in Bengaluru, Hyderabad
-            and Remote/Hybrid locations.
-
-          </p>
-
+          <div class="cert-name">Full Stack Testing with AI- 2026 </div>
+        
         </div>
-
-
-        <div class="flex flex-wrap gap-3">
-
-          <a
-            href="mailto:chennarajendra8@gmail.com"
-            class="rounded-xl bg-white px-5 py-3
-                   text-sm font-bold text-slate-950">
-
-            ✉ Email Me
-
-          </a>
-
-
-          <a
-            href="https://www.linkedin.com/in/rajendra-chenna-sdet"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded-xl border border-white/20
-                   px-5 py-3 text-sm font-bold
-                   hover:bg-white/10">
-
-            LinkedIn ↗
-
-          </a>
-
-
-          <!-- Replace # with your GitHub URL -->
-
-          <a
-            href="#"
-            onclick="alert('Add your GitHub profile URL here.')"
-            class="rounded-xl border border-white/20
-                   px-5 py-3 text-sm font-bold
-                   hover:bg-white/10">
-
-            GitHub ↗
-
-          </a>
-
-        </div>
-
       </div>
-
+      <div class="cert-card fade-in">
+        <div class="cert-icon">&#127891;</div>
+        <div>
+          <div class="cert-name">Software Testing Bootcamp</div>
+          <div class="cert-year">Udemy &nbsp;·&nbsp; 2025</div>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer
-  class="border-t border-slate-200 py-8
-         dark:border-white/10">
-
-  <div
-    class="mx-auto flex max-w-7xl flex-col gap-3
-           px-5 text-xs text-slate-500
-           sm:flex-row sm:items-center
-           sm:justify-between lg:px-8">
-
-    <span>
-      © 2026 Rajendra Chenna
-    </span>
-
-    <span>
-      QA Automation Engineer · Playwright · TypeScript · SDET
-    </span>
-
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-tag">// Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="section-divider"></div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-degree">Master of Computer Applications (MCA)</div>
+        <div class="edu-uni">Rajeev Gandhi Memorial College of Engineering & Technology, Nandyal</div>
+        <div class="edu-meta">
+          <span class="edu-cgpa">CGPA: 8.7 / 10</span>
+          <span class="edu-year">2022 – 2024</span>
+        </div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-degree">B.Sc. — Mathematics, Physics & Computer Science</div>
+        <div class="edu-uni">K.G.R. Degree College, Banaganapalli</div>
+        <div class="edu-meta">
+          <span class="edu-cgpa">CGPA: 8.0 / 10</span>
+          <span class="edu-year">2019 – 2022</span>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <p class="section-tag">// Recognition</p>
+    <h2 class="section-title">Key Achievements</h2>
+    <div class="section-divider"></div>
+    <div class="ach-grid">
+      <div class="ach-card gold-accent fade-in">
+        <div class="ach-title">&#127942; Round of Applause Award</div>
+        <div class="ach-desc">Received recognition certificate for outstanding performance, dedication, and quality contribution in project delivery at QualityKiosk.</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-title">Zero Critical Defect Escapes</div>
+        <div class="ach-desc">Maintained a perfect record across 5+ consecutive production releases on a live core banking platform serving thousands of users.</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-title">95%+ Functional Test Coverage</div>
+        <div class="ach-desc">Achieved comprehensive test coverage on the Saraswat Bank platform through systematic BVA and Equivalence Partitioning techniques.</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-title">300+ Test Cases Delivered</div>
+        <div class="ach-desc">Designed and executed 300+ structured test cases within 2 years across two enterprise banking clients.</div>
+      </div>
+      <div class="ach-card gold-accent fade-in">
+        <div class="ach-title">ISTQB Certified While Working Full-Time</div>
+        <div class="ach-desc">Earned ISTQB CTFL 4.0 certification alongside full-time employment — demonstrating commitment to continuous professional growth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--navy2);">
+  <div class="section-inner">
+    <p class="section-tag">// Get In Touch</p>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="section-divider"></div>
+    <div class="contact-wrap">
+      <div class="fade-in">
+        <p class="contact-desc">I'm actively looking for QA / SDET opportunities in Banking, FinTech, or enterprise software. If you're hiring or want to connect, I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:chennarajendra8@gmail.com" class="contact-link">
+            <div class="contact-link-icon">&#128231;</div>
+            chennarajendra8@gmail.com
+          </a>
+          <a href="tel:+917729890104" class="contact-link">
+            <div class="contact-link-icon">&#128222;</div>
+            +91 77298 90104
+          </a>
+          <a href="https://linkedin.com/in/rajendrachenna" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            linkedin.com/in/rajendrachenna
+          </a>
+          <div class="contact-link">
+            <div class="contact-link-icon">&#128205;</div>
+            Bengaluru, Karnataka, India
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <div class="form-group"><input type="text" placeholder="Your Name"/></div>
+        <div class="form-group"><input type="email" placeholder="Your Email"/></div>
+        <div class="form-group"><input type="text" placeholder="Subject"/></div>
+        <div class="form-group"><textarea placeholder="Your Message"></textarea></div>
+        <button class="btn-primary" onclick="alert('Please email me directly at chennarajendra8@gmail.com')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built for <span>Rajendra Chenna</span> &nbsp;·&nbsp; QA Test Engineer &nbsp;·&nbsp; Bengaluru, India</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">Available for SDET / Automation QA / Manual QA roles</p>
 </footer>
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
-
-  /* ========================================================
-     DARK / LIGHT MODE
-  ======================================================== */
-
-  function toggleTheme() {
-
-    document.documentElement.classList.toggle("dark");
-
-    const isDark =
-      document.documentElement.classList.contains("dark");
-
-    localStorage.setItem(
-      "theme",
-      isDark ? "dark" : "light"
-    );
-
-    document.getElementById("themeIcon").textContent =
-      isDark ? "☀️" : "🌙";
-
-  }
-
-
-  /* Load saved theme */
-
-  if (
-    localStorage.getItem("theme") === "dark"
-  ) {
-
-    document.documentElement.classList.add("dark");
-
-    document.getElementById("themeIcon").textContent =
-      "☀️";
-
-  }
-
-
-  /* ========================================================
-     MOBILE MENU
-  ======================================================== */
-
-  function toggleMobileMenu() {
-
-    document
-      .getElementById("mobileMenu")
-      .classList.toggle("hidden");
-
-  }
-
-
-  function closeMobileMenu() {
-
-    document
-      .getElementById("mobileMenu")
-      .classList.add("hidden");
-
-  }
-
-
-  /* ========================================================
-     SKILLS
-  ======================================================== */
-
-  const skillData = {
-
-    automation: {
-      title: "Automation",
-      items: [
-        "Playwright + TypeScript",
-        "Selenium + Java",
-        "Page Object Model",
-        "Hybrid Automation Framework",
-        "Regression Automation"
-      ]
-    },
-
-    programming: {
-      title: "Programming",
-      items: [
-        "TypeScript",
-        "Java",
-        "Test Case Design",
-        "BVA",
-        "Equivalence Partitioning"
-      ]
-    },
-
-    api: {
-      title: "API Testing",
-      items: [
-        "Postman",
-        "REST API Validation",
-        "Request / Response Validation",
-        "Integration Testing",
-        "API Data Verification"
-      ]
-    },
-
-    database: {
-      title: "Database Testing",
-      items: [
-        "SQL",
-        "SQL Server",
-        "UI-to-Database Validation",
-        "Transaction Validation",
-        "Data Integrity Testing"
-      ]
-    },
-
-   
-    ai: {
-      title: "AI Testing",
-      items: [
-        "AI-assisted Testing",
-        "Prompt Engineering",
-        "Generative AI Testing",
-        "AI Testing Workflows"
-      ]
-    }
-
-  };
-
-
-  function showSkill(category) {
-
-    const data = skillData[category];
-
-    const container =
-      document.getElementById("skillDetails");
-
-    container.innerHTML = `
-
-      <div>
-
-        <div
-          class="flex items-center gap-3">
-
-          <div
-            class="flex h-12 w-12 items-center
-                   justify-center rounded-xl
-                   bg-blue-50 text-xl
-                   dark:bg-blue-950/40">
-
-            ${category === "ai" ? "✦" : "⚙"}
-
-          </div>
-
-          <h3
-            class="text-2xl font-black">
-
-            ${data.title}
-
-          </h3>
-
-        </div>
-
-
-        <div
-          class="mt-7 grid gap-3 sm:grid-cols-2">
-
-          ${data.items.map(item => `
-
-            <div
-              class="rounded-2xl border
-                     border-slate-200
-                     bg-white p-4
-                     text-sm font-semibold
-                     dark:border-white/10
-                     dark:bg-white/[0.03]">
-
-              ✓ ${item}
-
-            </div>
-
-          `).join("")}
-
-        </div>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* Default skill */
-
-  showSkill("automation");
-
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
-
-
-<!-- =========================================================
-     SMALL COMPONENT STYLES
-========================================================= -->
-
-<style>
-
-  .box {
-
-    border: 1px solid rgba(255,255,255,.1);
-
-    background: rgba(255,255,255,.04);
-
-    border-radius: 12px;
-
-    padding: 14px;
-
-    text-align: center;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    transition: .2s;
-
-  }
-
-  .box:hover {
-
-    border-color: rgba(59,130,246,.6);
-
-    transform: translateY(-2px);
-
-  }
-
-
-  .credential {
-
-    border: 1px solid #e2e8f0;
-
-    border-radius: 20px;
-
-    padding: 22px;
-
-    background: white;
-
-    transition: .25s;
-
-  }
-
-  .credential:hover {
-
-    transform: translateY(-4px);
-
-    border-color: #93c5fd;
-
-  }
-
-
-  .dark .credential {
-
-    border-color: rgba(255,255,255,.1);
-
-    background: rgba(255,255,255,.03);
-
-  }
-
-
-  .skill-button {
-
-    border-color: #e2e8f0;
-
-    transition: .2s;
-
-  }
-
-
-  .dark .skill-button {
-
-    border-color: rgba(255,255,255,.1);
-
-  }
-
-
-  .skill-button:hover {
-
-    border-color: #3b82f6;
-
-    color: #2563eb;
-
-    transform: translateY(-2px);
-
-  }
-
-</style>
-
 </body>
 </html>
-```
