@@ -1,476 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Rajendra Chenna | QA Test Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajendra Chenna | Test Engineer (SDET) Portfolio</title>
+<meta name="description" content="Rajendra Chenna – Test Engineer (SDET) with 2.7+ years of manual and automation testing experience in Core Banking (CBS), BFSI. Playwright TypeScript, Selenium Java, TestNG, REST Assured, SQL, Jenkins and GitHub Actions.">
+<meta name="keywords" content="Rajendra Chenna, Rajendra Chenna, Test Engineer, SDET, QA Automation Engineer, Playwright, TypeScript, Selenium WebDriver, Core Java, TestNG, REST Assured, Postman, SQL, Jenkins, GitHub Actions, JIRA, BFSI, Core Banking">
+<meta name="author" content="Rajendra Chenna">
+<meta name="robots" content="index, follow">
+<!-- TODO: set canonical URL once hosted -->
+<link rel="canonical" href="https://[TODO-your-domain]/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Rajendra Chenna | SDET – Playwright, Selenium, API Testing">
+<meta property="og:description" content="Test Engineer (SDET) with 2.7+ years of experience in manual and automation testing of Core Banking applications using Playwright TypeScript and Selenium Java.">
+<meta property="og:url" content="https://[TODO-your-domain]/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rajendra Chenna | SDET – Playwright, Selenium, API Testing">
+<meta name="twitter:description" content="Test Engineer (SDET) with 2.7+ years in BFSI core banking QA automation.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rajendra Chenna",
+  "jobTitle": "Test Engineer (SDET)",
+  "worksFor": { "@type": "Organization", "name": "QualityKiosk Technologies" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+  "email": "mailto:chennarajendra8@gmail.com",
+  "sameAs": ["https://www.linkedin.com/in/rajendra-chenna-sdet"],
+  "knowsAbout": ["SDET", "Manual Testing", "Automation Testing", "Playwright", "TypeScript", "Selenium WebDriver", "Java", "TestNG", "REST Assured", "Postman", "SQL", "Core Banking", "BFSI", "JIRA"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#070d1a;
-    --navy2:#0c1425;
-    --navy3:#111e35;
-    --cyan:#00d4c8;
-    --cyan2:#00a99f;
-    --gold:#f0a020;
-    --text:#e8eaf0;
-    --muted:#7a8499;
-    --border:rgba(0,212,200,0.15);
-    --card:rgba(17,30,53,0.8);
+/* Layout idea: one narrow reading column, sticky nav, terminal-style hero, mono labels as "test IDs" for each section. */
+:root {
+  --bg: #f6f8f8;
+  --surface: #ffffff;
+  --ink: #12201f;
+  --muted: #536866;
+  --line: #d7e1e0;
+  --accent: #0d8a80;
+  --accent-soft: #e2f3f1;
+  --todo: #9a5b00;
+  --todo-bg: #fff4e0;
+  --term-bg: #0f1c1b;
+  --term-ink: #cfe6e3;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1413; --surface: #121d1c; --ink: #e3eeec; --muted: #93aaa7; --line: #233533;
+    --accent: #3cc4b6; --accent-soft: #15302d; --todo: #ffc46b; --todo-bg: #33270f;
+    --term-bg: #070d0c; --term-ink: #cfe6e3;
+    color-scheme: dark;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+}
+:root[data-theme="dark"] {
+  --bg: #0c1413; --surface: #121d1c; --ink: #e3eeec; --muted: #93aaa7; --line: #233533;
+  --accent: #3cc4b6; --accent-soft: #15302d; --todo: #ffc46b; --todo-bg: #33270f;
+  --term-bg: #070d0c; --term-ink: #cfe6e3;
+  color-scheme: dark;
+}
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6vw;}
-  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;}
-  .logo{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--cyan);letter-spacing:0.02em;}
-  .nav-links{display:flex;gap:2rem;list-style:none;}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
-  .nav-links a:hover{color:var(--cyan);}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 1rem; line-height: 1.6;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-  /* HERO */
-  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:100px 6vw 60px;overflow:hidden;}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,200,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,200,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
-  .hero-glow{position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(0,212,200,0.06) 0%,transparent 70%);pointer-events:none;}
-  .hero-glow2{position:absolute;bottom:-10%;right:-5%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(240,160,32,0.05) 0%,transparent 70%);pointer-events:none;}
-  .hero-content{position:relative;max-width:1100px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);border:1px solid var(--border);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem;letter-spacing:0.06em;}
-  .hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.1;color:#fff;margin-bottom:0.5rem;}
-  .hero-title{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--cyan);margin-bottom:1.5rem;letter-spacing:0.03em;}
-  .hero-desc{color:var(--muted);font-size:1rem;line-height:1.8;max-width:440px;margin-bottom:2.5rem;}
-  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
-  .btn-primary{background:var(--cyan);color:var(--navy);padding:12px 28px;border-radius:6px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;display:inline-block;}
-  .btn-primary:hover{background:var(--cyan2);transform:translateY(-1px);}
-  .btn-outline{border:1px solid var(--border);color:var(--text);padding:12px 28px;border-radius:6px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block;}
-  .btn-outline:hover{border-color:var(--cyan);color:var(--cyan);}
-  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:border-color 0.2s;}
-  .stat-card:hover{border-color:rgba(0,212,200,0.35);}
-  .stat-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--cyan);line-height:1;}
-  .stat-label{font-size:0.85rem;color:var(--muted);margin-top:6px;line-height:1.4;}
-  .stat-card.gold .stat-num{color:var(--gold);}
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 56px; }
+.brand { font-family: var(--font-mono); font-weight: 600; font-size: .9rem; color: var(--ink); text-decoration: none; }
+.brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 18px; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; }
+.nav-links a:hover { color: var(--ink); }
+.theme-btn { font: inherit; font-family: var(--font-mono); font-size: .8rem; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+.theme-btn:hover { border-color: var(--accent); }
+@media (max-width: 720px) { .nav-links a { display: none; } }
 
-  /* SECTION WRAPPER */
-  section{padding:100px 6vw;}
-  .section-inner{max-width:1100px;margin:0 auto;}
-  .section-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
-  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3vw,2.8rem);color:#fff;margin-bottom:1rem;}
-  .section-divider{width:50px;height:2px;background:var(--cyan);border-radius:2px;margin-bottom:3rem;}
+/* Hero */
+.hero { padding: 56px 0 40px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; letter-spacing: -.02em; }
+.hero .title { font-family: var(--font-mono); font-size: .9rem; color: var(--accent); margin: 10px 0 0; }
+.hero .value { font-size: 1.2rem; max-width: 60ch; margin: 16px 0 0; }
+.meta-line { color: var(--muted); font-size: .95rem; margin-top: 8px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: .95rem; border: 1px solid var(--accent); }
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { color: var(--accent); background: transparent; }
+.btn-ghost:hover { background: var(--accent-soft); }
 
-  /* SKILLS */
-  #skills{background:var(--navy2);}
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:border-color 0.2s,transform 0.2s;}
-  .skill-card:hover{border-color:rgba(0,212,200,0.35);transform:translateY(-3px);}
-  .skill-icon{width:42px;height:42px;border-radius:10px;background:rgba(0,212,200,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.2rem;}
-  .skill-card h3{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:0.75rem;}
-  .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;background:rgba(0,212,200,0.08);color:var(--cyan);border:1px solid rgba(0,212,200,0.2);padding:4px 10px;border-radius:100px;letter-spacing:0.03em;}
-  .tag.gold{background:rgba(240,160,32,0.08);color:var(--gold);border-color:rgba(240,160,32,0.2);}
+.terminal { background: var(--term-bg); color: var(--term-ink); border-radius: 10px; font-family: var(--font-mono); font-size: .85rem; overflow-x: auto; border: 1px solid var(--line); }
+.terminal .bar { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid #1f2e2d; }
+.terminal .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2f4442; display: block; }
+.terminal pre { margin: 0; padding: 14px 16px 16px; line-height: 1.7; }
+.t-prompt { color: #3cc4b6; }
+.t-dim { color: #7f9996; }
+.t-pass { color: #6fdc8c; }
 
-  /* EXPERIENCE */
-  .timeline{position:relative;padding-left:2rem;}
-  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
-  .timeline-item{position:relative;margin-bottom:3rem;}
-  .timeline-dot{position:absolute;left:-2.35rem;top:8px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid var(--navy);}
-  .exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s;}
-  .exp-card:hover{border-color:rgba(0,212,200,0.35);}
-  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;}
-  .exp-role{font-size:1.15rem;font-weight:600;color:#fff;}
-  .exp-period{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);background:rgba(0,212,200,0.08);border:1px solid rgba(0,212,200,0.2);padding:4px 12px;border-radius:100px;}
-  .exp-company{color:var(--gold);font-size:0.9rem;margin-bottom:1.25rem;}
-  .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-  .exp-bullets li{color:var(--muted);font-size:0.92rem;padding-left:1.2rem;position:relative;line-height:1.6;}
-  .exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--cyan);}
-  .exp-bullets li strong{color:var(--text);}
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stat b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: .85rem; }
+@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
-  /* PROJECTS */
-  #projects{background:var(--navy2);}
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.75rem;}
-  .project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:1rem;}
-  .project-card:hover{border-color:rgba(0,212,200,0.35);transform:translateY(-3px);}
-  .project-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold);background:rgba(240,160,32,0.08);border:1px solid rgba(240,160,32,0.2);padding:3px 10px;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase;}
-  .project-badge.live{color:var(--cyan);background:rgba(0,212,200,0.08);border-color:rgba(0,212,200,0.2);}
-  .project-title{font-size:1.1rem;font-weight:600;color:#fff;}
-  .project-desc{color:var(--muted);font-size:0.9rem;line-height:1.7;}
-  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
-  .project-metrics{display:flex;gap:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
-  .metric{text-align:center;}
-  .metric-val{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--cyan);}
-  .metric-lbl{font-size:0.72rem;color:var(--muted);}
+/* Sections */
+section.block { padding: 44px 0; border-top: 1px solid var(--line); }
+.label { font-family: var(--font-mono); font-size: .78rem; color: var(--accent); letter-spacing: .04em; margin-bottom: 6px; }
+section.block h2 { font-size: 1.6rem; margin-bottom: 20px; }
+.about p { max-width: 65ch; margin: 0; font-size: 1.05rem; }
 
-  /* CERTIFICATIONS */
-  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
-  .cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;}
-  .cert-card:hover{border-color:rgba(0,212,200,0.35);}
-  .cert-icon{width:44px;height:44px;min-width:44px;border-radius:10px;background:rgba(240,160,32,0.1);border:1px solid rgba(240,160,32,0.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
-  .cert-icon.active{background:rgba(0,212,200,0.1);border-color:rgba(0,212,200,0.2);}
-  .cert-name{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:4px;}
-  .cert-year{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);}
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+.skill-group { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.skill-group h3 { font-size: .95rem; margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.tags li { font-family: var(--font-mono); font-size: .76rem; padding: 4px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); border: 1px solid transparent; }
 
-  /* EDUCATION */
-  #education{background:var(--navy2);}
-  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
-  .edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s;}
-  .edu-card:hover{border-color:rgba(0,212,200,0.35);}
-  .edu-degree{font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.5rem;}
-  .edu-uni{color:var(--muted);font-size:0.9rem;margin-bottom:1rem;}
-  .edu-meta{display:flex;justify-content:space-between;align-items:center;}
-  .edu-cgpa{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--cyan);}
-  .edu-year{font-size:0.8rem;color:var(--muted);}
+/* Timeline */
+.company { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; margin-bottom: 18px; }
+.company h3 { font-size: 1.15rem; }
+.company p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+.dates { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--line); display: grid; gap: 22px; }
+.timeline > li { position: relative; }
+.timeline > li::before { content: ""; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); }
+.timeline > li.current::before { background: var(--accent); border-color: var(--accent); }
+.role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+.role-head h4 { margin: 0; font-size: 1.02rem; }
+.timeline ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink); }
+.timeline ul li { margin-bottom: 4px; max-width: 70ch; }
+.pill { font-family: var(--font-mono); font-size: .7rem; padding: 2px 8px; border-radius: 999px; background: var(--accent); color: var(--bg); margin-left: 8px; vertical-align: middle; }
 
-  /* ACHIEVEMENTS */
-  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
-  .ach-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;border-left:3px solid var(--cyan);transition:border-color 0.2s;}
-  .ach-card.gold-accent{border-left-color:var(--gold);}
-  .ach-card:hover{border-color:rgba(0,212,200,0.35);}
-  .ach-title{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:0.5rem;}
-  .ach-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.card h3 { font-size: 1.05rem; }
+.card dl { margin: 0; display: grid; gap: 8px; }
+.card dt { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.card dd { margin: 0; font-size: .93rem; }
+.todo { font-family: var(--font-mono); font-size: .8rem; color: var(--todo); background: var(--todo-bg); border: 1px dashed var(--todo); border-radius: 6px; padding: 2px 6px; display: inline-block; }
+.todo-note { margin: 0; }
 
-  /* CONTACT */
-  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-  .contact-desc{color:var(--muted);line-height:1.8;margin-bottom:2rem;}
-  .contact-links{display:flex;flex-direction:column;gap:1rem;}
-  .contact-link{display:flex;align-items:center;gap:0.75rem;color:var(--text);text-decoration:none;font-size:0.9rem;transition:color 0.2s;}
-  .contact-link:hover{color:var(--cyan);}
-  .contact-link-icon{width:40px;height:40px;border-radius:8px;background:rgba(0,212,200,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;}
-  .contact-form{display:flex;flex-direction:column;gap:1rem;}
-  .form-group input,.form-group textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;resize:vertical;}
-  .form-group input:focus,.form-group textarea:focus{border-color:rgba(0,212,200,0.5);}
-  .form-group textarea{min-height:120px;}
+/* Certs */
+.certs { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.certs li { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 16px; }
+.certs b { display: block; font-size: .97rem; }
+.certs span { color: var(--muted); font-size: .85rem; }
 
-  /* FOOTER */
-  footer{text-align:center;padding:3rem 6vw;border-top:1px solid var(--border);color:var(--muted);font-size:0.85rem;}
-  footer span{color:var(--cyan);}
-
-  /* RESPONSIVE */
-  @media(max-width:768px){
-    .hero-content{grid-template-columns:1fr;gap:3rem;}
-    .hero-stats{grid-template-columns:1fr 1fr;}
-    .contact-wrap{grid-template-columns:1fr;}
-    .nav-links{display:none;}
-  }
-
-  /* ANIMATE */
-  .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s,transform 0.6s;}
-  .fade-in.visible{opacity:1;transform:translateY(0);}
+/* Contact */
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.contact a, .contact div.c { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; text-decoration: none; color: var(--ink); display: grid; gap: 2px; word-break: break-word; }
+.contact a:hover { border-color: var(--accent); }
+.contact small { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.avail { margin-top: 16px; color: var(--muted); font-size: .95rem; }
+footer { padding: 28px 0 40px; color: var(--muted); font-size: .85rem; font-family: var(--font-mono); border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="logo">RC</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certs</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="mailto:chennarajendra8@gmail.com" class="btn-primary" style="padding:8px 20px;font-size:0.82rem;">Hire Me</a>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">rajendra<span>.chenna</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Project</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">◐ Theme</button>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="about">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-content">
-    <div class="fade-in">
-      <div class="hero-tag">&#x2713; Available for Opportunities</div>
-      <h1 class="hero-name">Rajendra<br/>Chenna</h1>
-      <p class="hero-title">SDET | Serving Notice | Playwright + TypeScript | Selenium | API Testing (Postman/REST) | SQL | CI/CD (Jenkins, Allure) | Banking & Fintech QA | ISTQB Certified | 2.7 Yrs | Bengaluru/Hyderabad/Remote</p>
-      <p class="hero-desc">2.6+ years delivering zero critical defect escapes on live core banking platforms. Specialist in Manual Testing, REST API validation, and SQL backend testing in Agile environments.</p>
-      <div class="hero-actions">
-        <a href="mailto:chennarajendra8@gmail.com" class="btn-primary">Get In Touch</a>
-        <a href="www.linkedin.com/in/rajendra-chenna-sdeta" target="_blank" class="btn-outline">LinkedIn ↗</a>
-      </div>
-    </div>
-    <div class="hero-stats fade-in" style="transition-delay:0.2s;">
-      <div class="stat-card">
-        <div class="stat-num">2.6+</div>
-        <div class="stat-label">Years in QA<br/>Banking & FinTech</div>
-      </div>
-      <div class="stat-card gold">
-        <div class="stat-num">300+</div>
-        <div class="stat-label">Test Cases Designed<br/>& Executed</div>
-      </div>
-      <div class="stat-card gold">
-        <div class="stat-num">95%+</div>
-        <div class="stat-label">Functional Test<br/>Coverage Achieved</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">0</div>
-        <div class="stat-label">Critical Defect<br/>Escapes in 5+ Releases</div>
-      </div>
-    </div>
-  </div>
-</section>
+<main class="wrap" id="top">
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <p class="section-tag">// Technical Expertise</p>
-    <h2 class="section-title">Skills & Tools</h2>
-    <div class="section-divider"></div>
-    <div class="skills-grid">
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#128202;</div>
-        <h3>Testing Types</h3>
-        <div class="skill-tags">
-          <span class="tag">Functional</span><span class="tag">Regression</span><span class="tag">Smoke</span><span class="tag">Sanity</span><span class="tag">Integration</span><span class="tag">System</span><span class="tag">UAT</span><span class="tag">E2E</span><span class="tag">Negative</span>
-        </div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#9997;</div>
-        <h3>Test Design Techniques</h3>
-        <div class="skill-tags">
-          <span class="tag">BVA</span><span class="tag">Equivalence Partitioning</span><span class="tag">Decision Table</span><span class="tag">RTM</span><span class="tag">Test Plans</span><span class="tag">Test Scenarios</span>
-        </div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#128225;</div>
-        <h3>API & Database</h3>
-        <div class="skill-tags">
-          <span class="tag">Postman</span><span class="tag">REST API</span><span class="tag">SQL</span><span class="tag">Joins</span><span class="tag">Subqueries</span><span class="tag">Backend Validation</span>
-        </div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#128295;</div>
-        <h3>Tools & Process</h3>
-        <div class="skill-tags">
-          <span class="tag">JIRA</span><span class="tag">Agile Scrum</span><span class="tag">SDLC</span><span class="tag">STLC</span><span class="tag">Defect Lifecycle</span><span class="tag">Sprint Planning</span>
-        </div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#129302;</div>
+  <!-- 1. HERO -->
+  <header class="hero">
+    <div>
+      <h1>Rajendra Chenna</h1>
+      <p class="title">Test Engineer (SDET) | QA Automation Engineer | Playwright TypeScript | Selenium Java | API Testing | BFSI</p>
+      <p class="value">Test Engineer (SDET) with 2.7+ years of experience in manual and automation testing of Core Banking (CBS) web applications for Saraswat Bank at QualityKiosk Technologies. Currently working with Playwright and TypeScript, with prior experience building Selenium WebDriver frameworks using Java and TestNG.</p>
+      <p class="meta-line">Bengaluru, India · Preferred locations: Bengaluru, Hyderabad, Chennai · Hybrid / Remote · Last working day: 14 Dec 2026</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="resume.pdf" download>↓ Download Resume</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/rajendra-chenna-sdet" target="_blank" rel="noopener">View LinkedIn →</a>
+    </div>
+
+    <div class="terminal" role="img" aria-label="Terminal showing a Playwright regression run across core banking modules">
+      <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="t-prompt">$</span> npx playwright test --grep @regression
+<span class="t-dim">Core Banking regression · Chromium / Firefox / Microsoft Edge</span>
+<span class="t-pass">✓</span> fund transfers   <span class="t-pass">✓</span> loans   <span class="t-pass">✓</span> deposits   <span class="t-pass">✓</span> CASA   <span class="t-pass">✓</span> KYC</pre>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>2.7+ yrs</b><span>QA in core banking (BFSI)</span></div>
+      <div class="stat"><b>300+</b><span>test cases designed &amp; executed</span></div>
+      <div class="stat"><b>100+</b><span>defects tracked in JIRA</span></div>
+      <div class="stat"><b>CTFL 4.0</b><span>ISTQB certified</span></div>
+    </div>
+  </header>
+
+  <!-- 2. ABOUT -->
+  <section class="block about" id="about">
+    <p class="label">// about</p>
+    <h2>About</h2>
+    <p>I am a Test Engineer at QualityKiosk Technologies, working on Saraswat Bank's Core Banking (CBS) application. My experience includes manual and automation testing across Fund Transfers, Loans, Deposits, CASA and KYC. I currently automate workflows using Playwright with TypeScript and have prior experience developing Selenium WebDriver POM and Hybrid frameworks using Core Java and TestNG. My skills include REST API testing with REST Assured and Postman, SQL backend validation, CI/CD integration with Jenkins and GitHub Actions, test reporting, defect management in JIRA and Agile/Scrum collaboration.</p>
+  </section>
+
+  <!-- 3. SKILLS -->
+  <section class="block" id="skills">
+    <p class="label">// skills</p>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-group">
         <h3>Automation</h3>
-        <div class="skill-tags">
-          <span class="tag gold">Playwright</span><span class="tag gold">Typescript</span> <span class="tag gold">Selenium WebDriver</span><span class="tag gold">Java</span><span class="tag gold">TestNG</span><span class="tag gold">POM</span><span class="tag gold">Maven</span>
-        </div>
+        <ul class="tags">
+          <li>Playwright</li><li>Selenium WebDriver</li><li>TestNG</li><li>Cucumber (BDD)</li><li>Page Object Model</li><li>Hybrid Framework</li><li>Data-Driven (DataProvider, Apache POI)</li><li>Selenium Grid</li><li>Parallel Execution</li><li>Cross-Browser</li>
+        </ul>
       </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon">&#127968;</div>
-        <h3>Domain Knowledge</h3>
-        <div class="skill-tags">
-          <span class="tag">Core Banking</span><span class="tag">NEFT/RTGS/IMPS</span><span class="tag">FinTech</span><span class="tag">LOS/LMS</span><span class="tag">E-Banking</span>
-        </div>
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul class="tags"><li>TypeScript</li><li>Java (Core)</li><li>JavaScript</li><li>SQL</li></ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <p class="section-tag">// Work History</p>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-divider"></div>
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-dot"></div>
-        <div class="exp-card">
-          <div class="exp-header">
-            <span class="exp-role">Consultant</span>
-            <span class="exp-period">Mar 2024 –Nov 2024</span>
-            <span class="exp-role">Test Engineer</span>
-            <span class="exp-period">Nov 2024 – Present</span>
-          </div>
-          <div class="exp-company">QualityKiosk Technologies Pvt. Ltd. &mdash; Bengaluru, India</div>
-          <ul class="exp-bullets">
-            <li>Led end-to-end manual QA for <strong>enterprise banking web applications</strong>, achieving <strong>zero critical defect escapes</strong> across 5+ consecutive production releases — directly protecting live customer financial transactions.</li>
-            <li>Designed and executed <strong>300+ structured test cases</strong> covering functional, regression, integration, and negative scenarios, mapped to business requirements via RTM.</li>
-            <li>Validated mission-critical banking workflows: <strong>NEFT / RTGS / IMPS</strong> fund transfers, Transaction History, Account Management, Bills & Recharges, and Statement Generation.</li>
-            <li>Conducted <strong>REST API testing using Postman</strong> — validated payloads, HTTP status codes (2xx/4xx/5xx), auth headers, and error responses; executed <strong>SQL backend validation</strong> to confirm UI-to-database data integrity.</li>
-            <li>Managed full <strong>defect lifecycle in JIRA</strong> and participated in all Agile ceremonies: Sprint Planning, Daily Stand-ups, Sprint Reviews, and Retrospectives.</li>
-            <li>Collaborated with developers and BAs to clarify acceptance criteria, reducing defect re-open rate and accelerating sprint sign-off cycles.</li>
-          </ul>
-        </div>
+      <div class="skill-group">
+        <h3>API</h3>
+        <ul class="tags"><li>REST API Testing</li><li>REST Assured</li><li>Postman</li><li>Playwright API Testing</li><li>SQL Backend Validation</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>CI/CD</h3>
+        <ul class="tags"><li>Jenkins</li><li>Jenkinsfile / Pipelines</li><li>GitHub Actions</li><li>Maven</li><li>Git / GitHub</li><li>Nightly Regression Runs</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Reporting</h3>
+        <ul class="tags"><li>JIRA</li><li>Extent Reports</li><li>Allure Reports</li><li>Playwright HTML Reports</li><li>Log4j</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Domain</h3>
+        <ul class="tags"><li>Manual Testing</li><li>Functional</li><li>Regression</li><li>Smoke</li><li>Sanity</li><li>Integration</li><li>System</li><li>UAT</li><li>Exploratory</li><li>SDLC</li><li>STLC</li><li>Agile / Scrum</li><li>RTM</li><li>RCA</li><li>BFSI</li><li>Core Banking (CBS)</li><li>Fund Transfers</li><li>Loans</li><li>Deposits</li><li>CASA</li><li>KYC</li></ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <p class="section-tag">// Project Work</p>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-divider"></div>
-    <div class="projects-grid">
-      <div class="project-card fade-in">
-        <span class="project-badge live">&#9679; Live Production</span>
-        <div class="project-title"> Core Banking Web App</div>
-        <div class="project-desc">Qa for 6 critical modules on a live production banking platform: Authentication, Account Management, Fund Transfers (NEFT/RTGS/IMPS), Transaction History, Bank Statements, and Bills & Recharges.</div>
-        <div class="project-stack">
-          <span class="tag">Manual Testing</span><span class="tag">JIRA</span><span class="tag">Postman</span><span class="tag">SQL</span><span class="tag">Regression</span>
-        </div>
-        <div class="project-metrics">
-          <div class="metric"><div class="metric-val">150+</div><div class="metric-lbl">Test Cases</div></div>
-          <div class="metric"><div class="metric-val">95%+</div><div class="metric-lbl">Coverage</div></div>
-          <div class="metric"><div class="metric-val">5+</div><div class="metric-lbl">Releases</div></div>
-          <div class="metric"><div class="metric-val">0</div><div class="metric-lbl">Escapes</div></div>
-        </div>
+  <!-- 4. EXPERIENCE -->
+  <section class="block" id="experience">
+    <p class="label">// experience</p>
+    <h2>Experience</h2>
+    <div class="company">
+      <div>
+        <h3>QualityKiosk Technologies Pvt Ltd</h3>
+        <p>Core Banking Application Testing · Client: Saraswat Bank</p>
       </div>
-      <div class="project-card fade-in">
-        <span class="project-badge" style="color:#a78bfa;background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.2);">&#x1F527;</span>
-        <div class="project-title">Selenium POM Automation Framework</div>
-        <div class="project-desc"> automation framework using Selenium WebDriver (Java) with Page Object Model design pattern. Automating login, search, cart, and checkout flows with data-driven TestNG tests.</div>
-        <div class="project-stack">
-          <span class="tag gold">Selenium</span><span class="tag gold">Java</span><span class="tag gold">TestNG</span><span class="tag gold">POM</span><span class="tag gold">Maven</span>
-        </div>
-        <div style="padding-top:1rem;border-top:1px solid var(--border);font-size:0.82rem;color:var(--muted);">2025 – Present &nbsp;·&nbsp; GitHub link coming soon</div>
-      </div>
+      <span class="dates">Mar 2024 – Present</span>
     </div>
-  </div>
-</section>
+    <ol class="timeline">
+      <li>
+        <div class="role-head"><h4>Consultant</h4><span class="dates">Mar 2024 – Nov 2024</span></div>
+        <ul>
+          <li>Executed manual tests and reported defects for core banking web modules; validated fixes with developers.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="role-head"><h4>Trainee Test Engineer</h4><span class="dates">Nov 2024 – Jun 2025</span></div>
+        <ul>
+          <li>Prepared and executed functional and regression test cases; reported defects in JIRA and retested fixes for release validation.</li>
+        </ul>
+      </li>
+      <li class="current">
+        <div class="role-head"><h4>Test Engineer <span class="pill">current</span></h4><span class="dates">Jul 2025 – Present</span></div>
+        <ul>
+          <li>Automating core banking workflows in Playwright + TypeScript with POM, Playwright API tests and HTML reports.</li>
+          <li>Built Selenium WebDriver (Java, TestNG) POM and hybrid frameworks with data-driven tests, listeners, retry analyzer and explicit waits.</li>
+          <li>Ran parallel and cross-browser suites on Selenium Grid (Chromium, Firefox, Edge).</li>
+          <li>Wired suites into Jenkins Pipelines and GitHub Actions with nightly cron runs and Allure, Extent and Playwright reports.</li>
+          <li>Contributed to test plans and test strategy; designed and executed 300+ test cases across functional, regression, smoke, sanity, integration, system and UAT testing, with RTM and positive, negative, boundary and edge-case coverage.</li>
+          <li>Logged and tracked 100+ defects through the full defect life cycle in JIRA; performed root cause analysis (RCA) on automation failures and improved suite stability.</li>
+          <li>Collaborated with developers, business analysts and QA teams in Agile/Scrum ceremonies; used ChatGPT, Claude and GitHub Copilot for test design and defect analysis.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="section-inner">
-    <p class="section-tag">// Credentials</p>
-    <h2 class="section-title">Certifications</h2>
-    <div class="section-divider"></div>
-    <div class="certs-grid">
-      <div class="cert-card fade-in">
-        <div class="cert-icon">&#127942;</div>
-        <div>
-          <div class="cert-name">ISTQB CTFL 4.0</div>
-          <div class="cert-year">Foundation Level Certification &nbsp;·&nbsp; 2025</div>
-        </div>
-      </div>
-      <div class="cert-card fade-in">
-        <div class="cert-icon active">&#129302;</div>
-        <div>
-          <div class="cert-name">Full Stack Testing with AI- 2026 </div>
-        
-        </div>
-      </div>
-      <div class="cert-card fade-in">
-        <div class="cert-icon">&#127891;</div>
-        <div>
-          <div class="cert-name">Software Testing Bootcamp</div>
-          <div class="cert-year">Udemy &nbsp;·&nbsp; 2025</div>
-        </div>
-      </div>
+  <!-- 5. PROJECTS -->
+  <section class="block" id="projects">
+    <p class="label">// projects</p>
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="card">
+        <h3>Core Banking Application Testing</h3>
+        <dl>
+          <dt>Client / Domain</dt><dd>Saraswat Bank · BFSI · Core Banking (CBS)</dd>
+          <dt>Coverage</dt><dd>Fund Transfers, Loans, Deposits, CASA and KYC workflows</dd>
+          <dt>Tech stack</dt><dd>Playwright, TypeScript, Selenium WebDriver, Core Java, TestNG, REST Assured, Postman, SQL, Jenkins, GitHub Actions and JIRA</dd>
+          <dt>Contribution</dt><dd>Manual and automation testing; POM and Hybrid frameworks; data-driven tests; API and backend validation; parallel and cross-browser execution; CI/CD regression runs and defect life-cycle management.</dd>
+          <dt>Testing scope</dt><dd>Functional, regression, smoke, sanity, integration, system and UAT testing; 300+ test cases designed and executed.</dd>
+        </dl>
+      </article>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-inner">
-    <p class="section-tag">// Academic Background</p>
-    <h2 class="section-title">Education</h2>
-    <div class="section-divider"></div>
-    <div class="edu-grid">
-      <div class="edu-card fade-in">
-        <div class="edu-degree">Master of Computer Applications (MCA)</div>
-        <div class="edu-uni">Rajeev Gandhi Memorial College of Engineering & Technology, Nandyal</div>
-        <div class="edu-meta">
-          <span class="edu-cgpa">CGPA: 8.7 / 10</span>
-          <span class="edu-year">2022 – 2024</span>
-        </div>
-      </div>
-      <div class="edu-card fade-in">
-        <div class="edu-degree">B.Sc. — Mathematics, Physics & Computer Science</div>
-        <div class="edu-uni">K.G.R. Degree College, Banaganapalli</div>
-        <div class="edu-meta">
-          <span class="edu-cgpa">CGPA: 8.0 / 10</span>
-          <span class="edu-year">2019 – 2022</span>
-        </div>
-      </div>
+  <!-- EDUCATION -->
+  <section class="block" id="education">
+    <p class="label">// education</p>
+    <h2>Education</h2>
+    <div class="projects">
+      <article class="card">
+        <h3>Master of Computer Applications (MCA)</h3>
+        <p>JNTUA · 2022–2024</p>
+      </article>
+      <article class="card">
+        <h3>Bachelor of Science (BSc – MPCS)</h3>
+        <p>Rayalaseema University · 2019–2022</p>
+      </article>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="section-inner">
-    <p class="section-tag">// Recognition</p>
-    <h2 class="section-title">Key Achievements</h2>
-    <div class="section-divider"></div>
-    <div class="ach-grid">
-      <div class="ach-card gold-accent fade-in">
-        <div class="ach-title">&#127942; Round of Applause Award</div>
-        <div class="ach-desc">Received recognition certificate for outstanding performance, dedication, and quality contribution in project delivery at QualityKiosk.</div>
-      </div>
-      <div class="ach-card fade-in">
-        <div class="ach-title">Zero Critical Defect Escapes</div>
-        <div class="ach-desc">Maintained a perfect record across 5+ consecutive production releases on a live core banking platform serving thousands of users.</div>
-      </div>
-      <div class="ach-card fade-in">
-        <div class="ach-title">95%+ Functional Test Coverage</div>
-        <div class="ach-desc">Achieved comprehensive test coverage on the Saraswat Bank platform through systematic BVA and Equivalence Partitioning techniques.</div>
-      </div>
-      <div class="ach-card fade-in">
-        <div class="ach-title">300+ Test Cases Delivered</div>
-        <div class="ach-desc">Designed and executed 300+ structured test cases within 2 years across two enterprise banking clients.</div>
-      </div>
-      <div class="ach-card gold-accent fade-in">
-        <div class="ach-title">ISTQB Certified While Working Full-Time</div>
-        <div class="ach-desc">Earned ISTQB CTFL 4.0 certification alongside full-time employment — demonstrating commitment to continuous professional growth.</div>
-      </div>
+  <!-- 6. CERTIFICATIONS -->
+  <section class="block" id="certifications">
+    <p class="label">// certifications</p>
+    <h2>Certifications &amp; Recognition</h2>
+    <ul class="certs">
+      <li><b>ISTQB CTFL 4.0</b><span>Certified Tester Foundation Level · 2025</span></li>
+      <li><b>Full Stack Testing with Generative AI</b><span>2026</span></li>
+      <li><b>Claude 101</b><span>Anthropic · 2026</span></li>
+      <li><b>"Round of Applause" Award</b><span>Core Banking automation project · QualityKiosk</span></li>
+    </ul>
+  </section>
+
+  <!-- 7. CONTACT -->
+  <section class="block" id="contact">
+    <p class="label">// contact</p>
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="tel:+917729890104"><small>Phone</small>+91 7729890104</a>
+      <a href="mailto:chennarajendra8@gmail.com"><small>Email</small>chennarajendra8@gmail.com</a>
+      <a href="https://www.linkedin.com/in/rajendra-chenna-sdet"><small>LinkedIn</small>linkedin.com/in/rajendra-chenna-sdet</a>
+      <a href="https://www.linkedin.com/in/rajendra-chenna-sdet" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/rajendra-chenna-sdet</a>
     </div>
-  </div>
-</section>
+    <p class="avail">Open to Test Engineer / SDET / QA Automation roles · Preferred locations: Bengaluru, Hyderabad and Chennai · Hybrid / Remote</p>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:var(--navy2);">
-  <div class="section-inner">
-    <p class="section-tag">// Get In Touch</p>
-    <h2 class="section-title">Contact Me</h2>
-    <div class="section-divider"></div>
-    <div class="contact-wrap">
-      <div class="fade-in">
-        <p class="contact-desc">I'm actively looking for QA / SDET opportunities in Banking, FinTech, or enterprise software. If you're hiring or want to connect, I'd love to hear from you.</p>
-        <div class="contact-links">
-          <a href="mailto:chennarajendra8@gmail.com" class="contact-link">
-            <div class="contact-link-icon">&#128231;</div>
-            chennarajendra8@gmail.com
-          </a>
-          <a href="tel:+917729890104" class="contact-link">
-            <div class="contact-link-icon">&#128222;</div>
-            +91 77298 90104
-          </a>
-          <a href="https://linkedin.com/in/rajendrachenna" target="_blank" class="contact-link">
-            <div class="contact-link-icon">in</div>
-            linkedin.com/in/rajendrachenna
-          </a>
-          <div class="contact-link">
-            <div class="contact-link-icon">&#128205;</div>
-            Bengaluru, Karnataka, India
-          </div>
-        </div>
-      </div>
-      <div class="contact-form fade-in">
-        <div class="form-group"><input type="text" placeholder="Your Name"/></div>
-        <div class="form-group"><input type="email" placeholder="Your Email"/></div>
-        <div class="form-group"><input type="text" placeholder="Subject"/></div>
-        <div class="form-group"><textarea placeholder="Your Message"></textarea></div>
-        <button class="btn-primary" onclick="alert('Please email me directly at chennarajendra8@gmail.com')">Send Message</button>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- FOOTER -->
 <footer>
-  <p>Designed & built for <span>Rajendra Chenna</span> &nbsp;·&nbsp; QA Test Engineer &nbsp;·&nbsp; Bengaluru, India</p>
-  <p style="margin-top:0.5rem;font-size:0.75rem;">Available for SDET / Automation QA / Manual QA roles</p>
+  <div class="wrap">© 2026 Rajendra Chenna · Built and tested by hand</div>
 </footer>
 
 <script>
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  try {
+    var saved = localStorage.getItem('rc-theme');
+    if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  } catch (e) {}
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t === 'light' || t === 'dark') return t;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('rc-theme', next); } catch (e) {}
+  });
+})();
 </script>
 </body>
 </html>
